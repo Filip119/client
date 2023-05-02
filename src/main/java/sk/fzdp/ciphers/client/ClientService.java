@@ -13,13 +13,13 @@ public class ClientService {
 	RestTemplate restTemplate;
 
 	//@Value("${cezar.url}")
-	private String cezarUrl = "https://cezar-istio-test.apps.openshift-demo.dr3.demo.sk";
+	private String cezarUrl = "http://cezar-istio-test.apps.openshift-demo.dr3.demo.sk";
 
 	//@Value("${reciprocal.url}")
-	private String reciprocalUrl = "https://reciprocal-istio-test.apps.openshift-demo.dr3.demo.sk";
+	private String reciprocalUrl = "http://reciprocal-istio-test.apps.openshift-demo.dr3.demo.sk";
 
 	//@Value("${swappairs.url}")
-	private String swappairsUrl = "https://swappairs-istio-test.apps.openshift-demo.dr3.demo.sk";
+	private String swappairsUrl = "http://swappairs-istio-test.apps.openshift-demo.dr3.demo.sk";
 
 	private ClientTask clientTask = null;
 
