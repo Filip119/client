@@ -34,6 +34,7 @@ public class ClientTask implements Runnable {
 	public void run() {
 		isRunning = true;
 		System.out.println("Starting task...");
+		try {
 		while (isRunning) {
 			System.out.println(callCezar("TestStringAbCdEf"));
 			sleep(3);
@@ -41,6 +42,9 @@ public class ClientTask implements Runnable {
 			sleep(3);
 			System.out.println(callSwappairs("TestStringAbCdEf"));
 			sleep(3);
+		}
+		} catch (Exception e) {
+			System.out.println("Exception in run: " + e.getMessage());
 		}
 	}
 
@@ -61,6 +65,7 @@ public class ClientTask implements Runnable {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
+		System.out.println("Calling " + cezarUrl + "/cezar/encode/" + text);
 		return restTemplate.exchange(cezarUrl + "/cezar/encode/" + text, HttpMethod.GET, entity, String.class)
 				.getBody();
 	}
@@ -69,6 +74,7 @@ public class ClientTask implements Runnable {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
+		System.out.println("Calling " + reciprocalUrl + "/reciprocal/encode/" + text);
 		return restTemplate.exchange(reciprocalUrl + "/reciprocal/encode/" + text, HttpMethod.GET, entity, String.class)
 				.getBody();
 	}
@@ -77,6 +83,7 @@ public class ClientTask implements Runnable {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
+		System.out.println("Calling " + swappairsUrl + "/swappairs/encode/" + text);
 		return restTemplate.exchange(swappairsUrl + "/swappairs/encode/" + text, HttpMethod.GET, entity, String.class)
 				.getBody();
 	}
