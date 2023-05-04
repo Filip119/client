@@ -62,29 +62,47 @@ public class ClientTask implements Runnable {
 	}
 
 	private String callCezar(String text) {
+		try {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
 		System.out.println("Calling " + cezarUrl + "/cezar/encode/" + text);
 		return restTemplate.exchange(cezarUrl + "/cezar/encode/" + text, HttpMethod.GET, entity, String.class)
 				.getBody();
+		}
+		catch (Exception e) {
+			System.out.println("Exception in run: " + e.getMessage());
+			return null;
+		}
 	}
 
 	private String callReciprocal(String text) {
-		HttpHeaders headers = new HttpHeaders();
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		HttpEntity<String> entity = new HttpEntity<String>(headers);
-		System.out.println("Calling " + reciprocalUrl + "/reciprocal/encode/" + text);
-		return restTemplate.exchange(reciprocalUrl + "/reciprocal/encode/" + text, HttpMethod.GET, entity, String.class)
-				.getBody();
+		try {
+			HttpHeaders headers = new HttpHeaders();
+			headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+			HttpEntity<String> entity = new HttpEntity<String>(headers);
+			System.out.println("Calling " + reciprocalUrl + "/reciprocal/encode/" + text);
+			return restTemplate.exchange(reciprocalUrl + "/reciprocal/encode/" + text, HttpMethod.GET, entity, String.class)
+					.getBody();
+		}
+		catch (Exception e) {
+			System.out.println("Exception in run: " + e.getMessage());
+			return null;
+		}
 	}
 
 	private String callSwappairs(String text) {
-		HttpHeaders headers = new HttpHeaders();
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		HttpEntity<String> entity = new HttpEntity<String>(headers);
-		System.out.println("Calling " + swappairsUrl + "/swappairs/encode/" + text);
-		return restTemplate.exchange(swappairsUrl + "/swappairs/encode/" + text, HttpMethod.GET, entity, String.class)
-				.getBody();
+		try {
+			HttpHeaders headers = new HttpHeaders();
+			headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+			HttpEntity<String> entity = new HttpEntity<String>(headers);
+			System.out.println("Calling " + swappairsUrl + "/swappairs/encode/" + text);
+			return restTemplate.exchange(swappairsUrl + "/swappairs/encode/" + text, HttpMethod.GET, entity, String.class)
+					.getBody();
+		}
+		catch (Exception e) {
+			System.out.println("Exception in run: " + e.getMessage());
+			return null;
+		}
 	}
 }
